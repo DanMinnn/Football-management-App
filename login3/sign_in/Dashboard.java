@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+
+import Co_so.*;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.management.loading.PrivateClassLoader;
@@ -21,10 +24,9 @@ public class Dashboard extends JFrame {
 
 	private JPanel contentPane;
 	private Home home;
-	private panel_CS1 pn_cs1;
-	private panel_CS2 pn_cs2;
-	private panel_CS3 pn_cs3;
-	
+	private Co_so_1 CS1;
+	private Co_so_2 CS2;
+	private Co_so_3 CS3;
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +49,7 @@ public class Dashboard extends JFrame {
 	public Dashboard() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 750, 500);
+		setBounds(100, 100, 950, 600);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(58, 105, 56));
@@ -55,28 +57,22 @@ public class Dashboard extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
 		home = new Home();
-		//home.setBounds(248, 5, 1, 1);
-		pn_cs1 = new panel_CS1();
-		//pn_cs1.setBounds(254, 5, 1, 1);
-		pn_cs2 = new panel_CS2();
-		//pn_cs2.setBounds(260, 5, 1, 1);
-		pn_cs3 = new panel_CS3();
-		//pn_cs3.setBounds(266, 5, 1, 1);
-		
+		CS1 = new Co_so_1();
+		CS2 = new Co_so_2();
+		CS3 = new Co_so_3();
 		
 		JPanel panel_menu = new JPanel();
 		panel_menu.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(192, 192, 192)));
 		panel_menu.setBackground(new Color(43, 81, 45));
-		panel_menu.setBounds(0, 0, 190, 500);
+		panel_menu.setBounds(0, 0, 190, 600);
 		contentPane.add(panel_menu);
 		panel_menu.setLayout(null);
 		
 		JLabel lb_icon_user = new JLabel("");
 		lb_icon_user.setIcon(new ImageIcon("D:\\JAVA\\icon\\user 64.png"));
 		
-		lb_icon_user.setBounds(65, 22, 64, 71);
+		lb_icon_user.setBounds(65, 39, 64, 71);
 		panel_menu.add(lb_icon_user);
 		
 		JPanel panel_home = new JPanel();
@@ -89,7 +85,7 @@ public class Dashboard extends JFrame {
 			}
 		});
 			
-		panel_home.setBounds(0, 130, 190, 60);
+		panel_home.setBounds(0, 180, 190, 60);
 		panel_menu.add(panel_home);
 		panel_home.setLayout(null);
 		
@@ -112,10 +108,10 @@ public class Dashboard extends JFrame {
 		panel_Coso1.addMouseListener(new PanelButtonMounseAdapter(panel_Coso1) {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				menuClicked(pn_cs1);
+				menuClicked(CS1);
 			}
 		});
-		panel_Coso1.setBounds(0, 190, 190, 60);
+		panel_Coso1.setBounds(0, 240, 190, 60);
 		panel_menu.add(panel_Coso1);
 		panel_Coso1.setLayout(null);
 		
@@ -138,10 +134,10 @@ public class Dashboard extends JFrame {
 		panel_Coso2.addMouseListener(new PanelButtonMounseAdapter(panel_Coso2) {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				menuClicked(pn_cs2);
+				menuClicked(CS2);
 			}
 		});
-		panel_Coso2.setBounds(0, 250, 190, 60);
+		panel_Coso2.setBounds(0, 300, 190, 60);
 		panel_menu.add(panel_Coso2);
 		panel_Coso2.setLayout(null);
 		
@@ -164,10 +160,10 @@ public class Dashboard extends JFrame {
 		panel_Coso3.addMouseListener(new PanelButtonMounseAdapter(panel_Coso3) {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				menuClicked(pn_cs3);
+				menuClicked(CS3);
 			}
 		});
-		panel_Coso3.setBounds(0, 310, 190, 60);
+		panel_Coso3.setBounds(0, 360, 190, 60);
 		panel_menu.add(panel_Coso3);
 		panel_Coso3.setLayout(null);
 		
@@ -188,7 +184,7 @@ public class Dashboard extends JFrame {
 		panel_signout.setBorder(new LineBorder(new Color(192, 192, 192)));
 		panel_signout.setBackground(new Color(62, 142, 62));
 		panel_signout.addMouseListener(new PanelButtonMounseAdapter(panel_signout));
-		panel_signout.setBounds(0, 370, 190, 60);
+		panel_signout.setBounds(0, 420, 190, 60);
 		panel_menu.add(panel_signout);
 		panel_signout.setLayout(null);
 																
@@ -220,11 +216,11 @@ public class Dashboard extends JFrame {
 		lb_name_user.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_name_user.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lb_name_user.setForeground(new Color(255, 255, 255));
-		lb_name_user.setBounds(10, 90, 170, 30);
+		lb_name_user.setBounds(10, 120, 170, 30);
 		panel_menu.add(lb_name_user);
 		
 		JLabel lb_user = new JLabel("");
-		lb_user.setBounds(0, 0, 190, 132);
+		lb_user.setBounds(0, 0, 190, 170);
 		panel_menu.add(lb_user);
 		
 		JLabel label_exit = new JLabel("X");
@@ -246,27 +242,28 @@ public class Dashboard extends JFrame {
 		});
 		label_exit.setForeground(new Color(248, 248, 255));
 		label_exit.setFont(new Font("Tahoma", Font.BOLD, 20));
-		label_exit.setBounds(730, 0, 20, 27);
+		label_exit.setBounds(930, 0, 20, 27);
 		contentPane.add(label_exit);
 		
 		JPanel panel_Main_content = new JPanel();
-		panel_Main_content.setBounds(210, 25, 515, 450);
+		panel_Main_content.setBounds(210, 25, 710, 550);
 		contentPane.add(panel_Main_content);
 		panel_Main_content.setLayout(null);
-		//add panel 
+		
 		panel_Main_content.add(home);
-		panel_Main_content.add(pn_cs1);
-		panel_Main_content.add(pn_cs2);
-		panel_Main_content.add(pn_cs3);
+		panel_Main_content.add(CS1);
+		panel_Main_content.add(CS2);
+		panel_Main_content.add(CS3);
 		
 		menuClicked(home);
-	      }
+	}
+		
 	
 	public void menuClicked(JPanel panel) {
+		CS1.setVisible(false);
+		CS2.setVisible(false);
+		CS3.setVisible(false);
 		home.setVisible(false);
-		pn_cs1.setVisible(false);
-		pn_cs2.setVisible(false);
-		pn_cs3.setVisible(false);
 		
 		panel.setVisible(true);
 	}
