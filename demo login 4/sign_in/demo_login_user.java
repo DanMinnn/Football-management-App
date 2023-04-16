@@ -24,7 +24,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
@@ -37,7 +36,8 @@ public class demo_login_user extends JFrame {
 	private JTextField txtEmail;
 	private JPasswordField pwdPassword;
 	private JLabel lb_message = new JLabel("Mời bạn đăng nhập");
-	//sign in
+
+	// sign in
 	/**
 	 * Launch the application.
 	 */
@@ -73,27 +73,12 @@ public class demo_login_user extends JFrame {
 		PA.setBackground(new Color(51, 104, 47));
 		contentPane.add(PA, BorderLayout.CENTER);
 		PA.setLayout(null);
-				
-				JLabel lblNewLabel_1 = new JLabel("");
-				lblNewLabel_1.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						select_Login s_login = new select_Login();
-						s_login.setVisible(true);
-						demo_login_user.this.dispose();
-					}
-				});
-				lblNewLabel_1.setBackground(new Color(55, 149, 81));
-				// tìm ảnh trong file
-				lblNewLabel_1.setIcon(new ImageIcon("D:\\JAVA\\icon\\return.png"));
-				lblNewLabel_1.setBounds(10, 403, 53, 27);
-				PA.add(lblNewLabel_1);
-		
-				JLabel lblNewLabel_2 = new JLabel("");
-				lblNewLabel_2.setBounds(261, 36, 64, 64);
-				PA.add(lblNewLabel_2);
-				// tìm ảnh trong file
-				lblNewLabel_2.setIcon(new ImageIcon("D:\\JAVA\\icon\\user 64.png"));
+
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(261, 36, 64, 64);
+		PA.add(lblNewLabel_2);
+		// tìm ảnh trong file
+		lblNewLabel_2.setIcon(new ImageIcon("D:\\JAVA\\icon\\user 64.png"));
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
@@ -151,26 +136,20 @@ public class demo_login_user extends JFrame {
 		panel_1.add(btnRegister);
 
 		JButton btnSignIn = new JButton("SIGN IN");
-		btnSignIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnSignIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				if (txtEmail.getText().equals("khadeptrai123") && pwdPassword.getText().equals("123lol456")) {
-					// if  user inputs  are correct
+					// if user inputs are correct
 					lb_message.setText("");
-					JOptionPane.showMessageDialog( null,"Login Successful!");
+					JOptionPane.showMessageDialog(null, "Login Successful!");
 					Dashboard dashboard = new Dashboard();
 					dashboard.setVisible(true);
 					demo_login_user.this.dispose();
-				}
-				else if(txtEmail.getText().equals("")|| txtEmail.getText().equals("Username")||
-						pwdPassword.getText().equals("")||pwdPassword.getText().equals("Password")) {
+				} else if (txtEmail.getText().equals("") || pwdPassword.getText().equals("")) {
 					lb_message.setText("Vui lòng nhập đầy đủ email và mật khẩu!");
-				}
-				else {
+				} else {
 					lb_message.setText("Vui lòng nhập đúng email và mật khẩu!");
 				}
 			}
@@ -209,7 +188,7 @@ public class demo_login_user extends JFrame {
 		pwdPassword.setText("Password");
 		pwdPassword.setBounds(27, 150, 270, 32);
 		panel_1.add(pwdPassword);
-		
+
 		lb_message.setHorizontalAlignment(SwingConstants.LEFT);
 		lb_message.setForeground(new Color(112, 128, 144));
 		lb_message.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -241,10 +220,43 @@ public class demo_login_user extends JFrame {
 		label_exit.setFont(new Font("Tahoma", Font.BOLD, 20));
 		label_exit.setBounds(570, 0, 20, 27);
 		PA.add(label_exit);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(407, 70, 53, 27);
 		PA.add(lblNewLabel);
+		
+		JPanel lg_admin = new JPanel();
+		lg_admin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				demo_login_admin login_admin = new demo_login_admin();
+				login_admin.setVisible(true);
+				demo_login_user.this.dispose();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lg_admin.setBackground(new Color(192,192,192));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lg_admin.setBackground(new Color(240,240,240));
+			}
+		});
+		lg_admin.setBounds(10, 10, 91, 90);
+		PA.add(lg_admin);
+		lg_admin.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("D:\\JAVA\\icon\\admin 64.png"));
+		lblNewLabel_1.setBounds(10, 0, 71, 64);
+		lg_admin.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("Admin");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_3.setBounds(10, 62, 71, 25);
+		lg_admin.add(lblNewLabel_3);
 
 	}
 }
