@@ -10,6 +10,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import Co_so.*;
+import Main.model.sign_in_user;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,6 +28,7 @@ public class Dashboard extends JFrame {
 	private Co_so_1 CS1;
 	private Co_so_2 CS2;
 	private Co_so_3 CS3;
+	private JLabel lb_name_user;
 	/**
 	 * Launch the application.
 	 */
@@ -212,7 +214,8 @@ public class Dashboard extends JFrame {
 		lblNewLabel_2.setBounds(20, 10, 38, 40);
 		panel_signout.add(lblNewLabel_2);
 		
-		JLabel lb_name_user = new JLabel("khadeptrai123");
+		
+		 lb_name_user = new JLabel("");
 		lb_name_user.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_name_user.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lb_name_user.setForeground(new Color(255, 255, 255));
@@ -257,7 +260,11 @@ public class Dashboard extends JFrame {
 		
 		menuClicked(home);
 	}
-		
+	// _______LẤY RA TÊN USERNAME _______________	
+	public void setusername(String username) {
+		this.lb_name_user.setText(username);
+	}
+	
 	
 	public void menuClicked(JPanel panel) {
 		CS1.setVisible(false);
