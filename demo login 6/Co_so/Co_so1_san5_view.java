@@ -19,8 +19,7 @@ import javax.swing.ImageIcon;
 public class Co_so1_san5_view extends JPanel {
 	private JTable table_san_bong;
 	private JTextField textField;
-	private JTextField textField_1;
-
+	private JTextField textField_1; 
 	/**
 	 * Create the panel.
 	 */

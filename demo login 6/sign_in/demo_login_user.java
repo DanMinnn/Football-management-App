@@ -17,6 +17,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,16 +28,20 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import Main.database.jdbc_until;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JPasswordField;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class demo_login_user extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtEmail;
+	private JTextField txtUsername;
 	private JPasswordField pwdPassword;
 	private JLabel lb_message = new JLabel("Mời bạn đăng nhập");
 
@@ -92,32 +100,32 @@ public class demo_login_user extends JFrame {
 		lb_Title.setBounds(25, 25, 140, 49);
 		panel_1.add(lb_Title);
 
-		txtEmail = new JTextField();
-		txtEmail.addFocusListener(new FocusAdapter() {
+		txtUsername = new JTextField();
+		txtUsername.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if (txtEmail.getText().equals("Username")) {
-					txtEmail.setText("");
+				if (txtUsername.getText().equals("Username")) {
+					txtUsername.setText("");
 				} else {
-					txtEmail.selectAll();
+					txtUsername.selectAll();
 				}
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				if (txtEmail.getText().equals("")) {
-					txtEmail.setText("Username");
+				if (txtUsername.getText().equals("")) {
+					txtUsername.setText("Username");
 				}
 			}
 		});
-		txtEmail.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
-		txtEmail.setForeground(new Color(169, 169, 169));
-		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtEmail.setText("Username");
-		txtEmail.setBounds(27, 90, 270, 36);
-		panel_1.add(txtEmail);
+		txtUsername.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
+		txtUsername.setForeground(new Color(169, 169, 169));
+		txtUsername.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtUsername.setText("Username");
+		txtUsername.setBounds(27, 90, 270, 36);
+		panel_1.add(txtUsername);
 
-		txtEmail.setColumns(10);
+		txtUsername.setColumns(10);
 
 		JButton btnRegister = new JButton("REGISTER");
 		btnRegister.addMouseListener(new MouseAdapter() {
@@ -136,24 +144,66 @@ public class demo_login_user extends JFrame {
 		panel_1.add(btnRegister);
 
 		JButton btnSignIn = new JButton("SIGN IN");
-		btnSignIn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				if (txtEmail.getText().equals("khadeptrai123") && pwdPassword.getText().equals("123lol456")) {
-					// if user inputs are correct
-					lb_message.setText("");
-					JOptionPane.showMessageDialog(null, "Login Successful!");
-					Dashboard dashboard = new Dashboard();
-					dashboard.setVisible(true);
-					demo_login_user.this.dispose();
-				} else if (txtEmail.getText().equals("") || pwdPassword.getText().equals("")) {
+		// ___________________KIỂM TRA CÓ USER TRONG "sign_in_user"
+		// KO____________________________
+		btnSignIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (txtUsername.getText().equals("") || txtUsername.getText().equals("Username")
+						|| pwdPassword.getText().equals("") || pwdPassword.getText().equals("Password")) {
 					lb_message.setText("Vui lòng nhập đầy đủ email và mật khẩu!");
 				} else {
-					lb_message.setText("Vui lòng nhập đúng email và mật khẩu!");
+					try {
+						// tạo kết nối
+						Connection connection = jdbc_until.getConnection();
+						// tạo biến statement
+						Statement st = connection.createStatement();
+
+						// thêm câu lệnh
+						String sql = "	Select * from sign_in_user where username = '" + txtUsername.getText()
+								+ "' and password = '" + pwdPassword.getText() + "';";
+						ResultSet rs = st.executeQuery(sql);
+						// kiểm tra dữ liệu
+
+						if (rs.next()) {
+							System.out.println("bạn vừa thực hiện câu lênh: " + sql + " thành công");
+							lb_message.setText("");
+							JOptionPane.showMessageDialog(null, "Login Successful!");
+							Dashboard dashboard = new Dashboard();
+							dashboard.setusername(txtUsername.getText());// GÁN USERNAME
+							dashboard.setVisible(true);
+							demo_login_user.this.dispose();
+						} else {
+							lb_message.setText("Vui lòng nhập đúng email và mật khẩu!");
+							System.out.println("thực hiện không thành công");
+						}
+						// ngắt kết nối
+						jdbc_until.closeConnection(connection);
+
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
+
 			}
 		});
+//		btnSignIn.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				
+//				if (txtUsername.getText().equals("khadeptrai123") && pwdPassword.getText().equals("123lol456")) {
+//					// if user inputs are correct
+//					lb_message.setText("");
+//					JOptionPane.showMessageDialog(null, "Login Successful!");
+//					Dashboard dashboard = new Dashboard();
+//					dashboard.setVisible(true);
+//					demo_login_user.this.dispose();
+//				} else if (txtUsername.getText().equals("") ||txtUsername.getText().equals("Username")|| pwdPassword.getText().equals("")||pwdPassword.getText().equals("Password")) {
+//					lb_message.setText("Vui lòng nhập đầy đủ email và mật khẩu!");
+//				} else {
+//					lb_message.setText("Vui lòng nhập đúng email và mật khẩu!");
+//				}
+//			}
+//		});
 		btnSignIn.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(0, 0, 0)));
 		btnSignIn.setBackground(new Color(46, 139, 87));
 		btnSignIn.setForeground(new Color(255, 255, 255));
@@ -224,7 +274,7 @@ public class demo_login_user extends JFrame {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(407, 70, 53, 27);
 		PA.add(lblNewLabel);
-		
+
 		JPanel lg_admin = new JPanel();
 		lg_admin.addMouseListener(new MouseAdapter() {
 			@Override
@@ -233,25 +283,26 @@ public class demo_login_user extends JFrame {
 				login_admin.setVisible(true);
 				demo_login_user.this.dispose();
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lg_admin.setBackground(new Color(192,192,192));
+				lg_admin.setBackground(new Color(192, 192, 192));
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lg_admin.setBackground(new Color(240,240,240));
+				lg_admin.setBackground(new Color(240, 240, 240));
 			}
 		});
 		lg_admin.setBounds(10, 10, 91, 90);
 		PA.add(lg_admin);
 		lg_admin.setLayout(null);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("D:\\JAVA\\icon\\admin 64.png"));
 		lblNewLabel_1.setBounds(10, 0, 71, 64);
 		lg_admin.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Admin");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));

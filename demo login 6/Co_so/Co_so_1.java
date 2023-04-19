@@ -12,6 +12,8 @@ import java.awt.Label;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.JScrollBar;
 import javax.swing.JPopupMenu;
@@ -24,6 +26,8 @@ import java.awt.event.ActionEvent;
 public class Co_so_1 extends JPanel {
 	
 		
+	//private Image img_s = new ImageIcon(Co_so_1.class.getResource("img_/icon cơ sở.png")).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+	
 	private Co_so1_san5_view cs1_s5;
 	private Co_so1_san7_view cs1_s7;
 	private Nhan_vien_cs1_view nv_cs1;
@@ -49,6 +53,7 @@ public class Co_so_1 extends JPanel {
 		nv_cs1 = new Nhan_vien_cs1_view();
 		
 		JMenu Menu_san = new JMenu("Sân bóng");
+		//Menu_san.setIcon(new ImageIcon(img_s));
 		Menu_san.setIcon(new ImageIcon("D:\\JAVA\\icon\\icon cơ sở.png"));
 		Menu_san.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(Menu_san);

@@ -1,6 +1,7 @@
 package Main.dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class sign_in_user_dao implements Dao_interface<sign_in_user> {
 	}
 	
 	@Override
-	public int insert(sign_in_user t) {
+	public int insert(sign_in_user t) {// THÊM MỘT USER MỚI VÀO sign_in_user
 		int check =0;
 		try {
 			// tạo kết nối
@@ -25,7 +26,7 @@ public class sign_in_user_dao implements Dao_interface<sign_in_user> {
 		// tạo biến statement
 			Statement st= connection.createStatement();
 			// thêm câu lệnh 
-			String sql = "insert into sign_in_user (username, sdt ,password ) values('" +t.getUsername()+ "', '" +t.getSdt()+ "', '" +t.getPassword()+ "');";
+			String sql = "insert into sign_in_user (username, sdt, password) values('" +t.getUsername()+ "', '" +t.getSdt()+ "', '" +t.getPassword()+ "');";
 			
 			// thực thi câu lệnh
 			 check = st.executeUpdate(sql);
@@ -50,40 +51,16 @@ public class sign_in_user_dao implements Dao_interface<sign_in_user> {
 
 	@Override
 	public int delete(sign_in_user t) {
-		int check =0;
-		try {
-			// tạo kết nối
-		Connection connection = jdbc_until.getConnection();
-		// tạo biến statement
-			Statement st= connection.createStatement();
-			// thêm câu lệnh 
-			String sql = "	DELETE from sign_in_user"+
-					   " where maS="+ t.getUsername()+";";
-			
-			// thực thi câu lệnh
-			 check = st.executeUpdate(sql);
-			if(check>0) {
-				System.out.println("bạn vừa thực hiện câu lênh: "+ sql+" thành công");
-			}else {
-				System.out.println("thực hiện không thành công");
-			}
-			// ngắt kết nối 
-			jdbc_until.closeConnection(connection);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return check;
+		return 0;
 	}
 
 	@Override
-	public ArrayList<sign_in_user> selectALL() {
+	public ArrayList<sign_in_user> selectALL(){
 		return null;
 	}
 
 	@Override
 	public sign_in_user Selectby_id(sign_in_user t) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -91,6 +68,10 @@ public class sign_in_user_dao implements Dao_interface<sign_in_user> {
 	public ArrayList<sign_in_user> select_by_condition(String condition) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void check() {
+		
 	}
 
 }

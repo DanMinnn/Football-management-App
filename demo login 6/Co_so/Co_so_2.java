@@ -15,7 +15,10 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 public class Co_so_2 extends JPanel {
-
+	
+	
+	private Co_so2_san5_view cs1_s5;
+	private Co_so2_san7_view cs1_s7;
 	/**
 	 * Create the panel.
 	 */
@@ -67,11 +70,9 @@ public class Co_so_2 extends JPanel {
 		mntmNewMenuItem_3.setIcon(new ImageIcon("D:\\JAVA\\icon\\Iconshock-Real-Vista-Jobs-Asian.32.png"));
 		menu_nv.add(mntmNewMenuItem_3);
 		
-		JPanel panel_thong_tin = new JPanel();
-		panel_thong_tin.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_thong_tin.setBounds(10, 46, 690, 491);
-		add(panel_thong_tin);
-		panel_thong_tin.setLayout(null);
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 34, 710, 516);
+		add(panel);
 		
 	}
 }
