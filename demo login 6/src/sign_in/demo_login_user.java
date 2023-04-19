@@ -86,7 +86,8 @@ public class demo_login_user extends JFrame {
 		lblNewLabel_2.setBounds(261, 36, 64, 64);
 		PA.add(lblNewLabel_2);
 		// tìm ảnh trong file
-		lblNewLabel_2.setIcon(new ImageIcon("D:\\JAVA\\icon\\user 64.png"));
+		Image icon_user = new ImageIcon(this.getClass().getResource("/user 64.png")).getImage();
+		lblNewLabel_2.setIcon(new ImageIcon(icon_user));
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
@@ -186,27 +187,13 @@ public class demo_login_user extends JFrame {
 
 			}
 		});
-//		btnSignIn.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				
-//				if (txtUsername.getText().equals("khadeptrai123") && pwdPassword.getText().equals("123lol456")) {
-//					// if user inputs are correct
-//					lb_message.setText("");
-//					JOptionPane.showMessageDialog(null, "Login Successful!");
-//					Dashboard dashboard = new Dashboard();
-//					dashboard.setVisible(true);
-//					demo_login_user.this.dispose();
-//				} else if (txtUsername.getText().equals("") ||txtUsername.getText().equals("Username")|| pwdPassword.getText().equals("")||pwdPassword.getText().equals("Password")) {
-//					lb_message.setText("Vui lòng nhập đầy đủ email và mật khẩu!");
-//				} else {
-//					lb_message.setText("Vui lòng nhập đúng email và mật khẩu!");
-//				}
-//			}
-//		});
+
 		btnSignIn.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(0, 0, 0)));
 		btnSignIn.setBackground(new Color(46, 139, 87));
 		btnSignIn.setForeground(new Color(255, 255, 255));
+		btnSignIn.setOpaque(true);
+		btnSignIn.setBorderPainted(false);
+		
 		btnSignIn.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnSignIn.setBounds(166, 253, 165, 36);
 		panel_1.add(btnSignIn);
@@ -299,7 +286,8 @@ public class demo_login_user extends JFrame {
 		lg_admin.setLayout(null);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("D:\\JAVA\\icon\\admin 64.png"));
+		Image icon_admin = new ImageIcon(this.getClass().getResource("/admin 64.png")).getImage();
+		lblNewLabel_1.setIcon(new ImageIcon(icon_admin));
 		lblNewLabel_1.setBounds(10, 0, 71, 64);
 		lg_admin.add(lblNewLabel_1);
 

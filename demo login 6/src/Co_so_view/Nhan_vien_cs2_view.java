@@ -1,4 +1,4 @@
-package Co_so;
+package Co_so_view;
 
 import java.awt.Color;
 
@@ -12,13 +12,13 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Nhan_vien_cs1_view extends JPanel {
+public class Nhan_vien_cs2_view extends JPanel {
 	private JTable table;
 
 	/**
 	 * Create the panel.
 	 */
-	public Nhan_vien_cs1_view() {
+	public Nhan_vien_cs2_view() {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(255, 255, 255));
 		setBounds(0,0,710,503);

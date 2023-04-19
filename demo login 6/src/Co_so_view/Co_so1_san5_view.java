@@ -1,4 +1,4 @@
-package Co_so;
+package Co_so_view;
 
 import java.awt.Color;
 
@@ -7,6 +7,8 @@ import javax.swing.border.MatteBorder;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTable;
 import javax.swing.JSeparator;
 import javax.swing.JScrollBar;
@@ -102,7 +104,8 @@ public class Co_so1_san5_view extends JPanel {
 		panel_1_1.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Thêm mới khách hàng");
-		lblNewLabel_2_1.setIcon(new ImageIcon("D:\\JAVA\\icon\\Custom-Icon-Design-Pretty-Office-3-Add-Male-User.32.png"));
+		Image icon_add_kh = new ImageIcon(this.getClass().getResource("/add khach hang.png")).getImage();
+		lblNewLabel_2_1.setIcon(new ImageIcon(icon_add_kh));
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_2_1.setBounds(471, 61, 200, 47);
 		panel_1.add(lblNewLabel_2_1);

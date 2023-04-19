@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.management.loading.PrivateClassLoader;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -72,9 +74,10 @@ public class Dashboard extends JFrame {
 		panel_menu.setLayout(null);
 		
 		JLabel lb_icon_user = new JLabel("");
-		lb_icon_user.setIcon(new ImageIcon("D:\\JAVA\\icon\\user 64.png"));
+		Image icon_user = new ImageIcon(this.getClass().getResource("/user 94.png")).getImage();
+		lb_icon_user.setIcon(new ImageIcon(icon_user));
 		
-		lb_icon_user.setBounds(65, 39, 64, 71);
+		lb_icon_user.setBounds(44, 21, 96, 103);
 		panel_menu.add(lb_icon_user);
 		
 		JPanel panel_home = new JPanel();
@@ -99,7 +102,8 @@ public class Dashboard extends JFrame {
 		panel_home.add(lb_home);
 		
 		JLabel lblNewLabel_2_4 = new JLabel("");
-		lblNewLabel_2_4.setIcon(new ImageIcon("D:\\JAVA\\icon\\icon home.png"));
+		Image icon_home = new ImageIcon(this.getClass().getResource("/icon home.png")).getImage();
+		lblNewLabel_2_4.setIcon(new ImageIcon(icon_home));
 		lblNewLabel_2_4.setForeground(Color.WHITE);
 		lblNewLabel_2_4.setBounds(20, 10, 45, 40);
 		panel_home.add(lblNewLabel_2_4);
@@ -125,7 +129,8 @@ public class Dashboard extends JFrame {
 		panel_Coso1.add(lb_Coso_1);
 		
 		JLabel lblNewLabel_2_3 = new JLabel("");
-		lblNewLabel_2_3.setIcon(new ImageIcon("D:\\JAVA\\icon\\icon cơ sở.png"));
+		Image icon_cs = new ImageIcon(this.getClass().getResource("/icon cơ sở.png")).getImage();
+		lblNewLabel_2_3.setIcon(new ImageIcon(icon_cs));
 		lblNewLabel_2_3.setForeground(Color.WHITE);
 		lblNewLabel_2_3.setBounds(20, 10, 45, 40);
 		panel_Coso1.add(lblNewLabel_2_3);
@@ -151,7 +156,8 @@ public class Dashboard extends JFrame {
 		panel_Coso2.add(lb_Coso_2);
 		
 		JLabel lblNewLabel_2_2 = new JLabel("");
-		lblNewLabel_2_2.setIcon(new ImageIcon("D:\\JAVA\\icon\\icon cơ sở.png"));
+		
+		lblNewLabel_2_2.setIcon(new ImageIcon(icon_cs));
 		lblNewLabel_2_2.setForeground(Color.WHITE);
 		lblNewLabel_2_2.setBounds(20, 10, 45, 40);
 		panel_Coso2.add(lblNewLabel_2_2);
@@ -177,7 +183,7 @@ public class Dashboard extends JFrame {
 		panel_Coso3.add(lb_Coso_3);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("");
-		lblNewLabel_2_1.setIcon(new ImageIcon("D:\\JAVA\\icon\\icon cơ sở.png"));
+		lblNewLabel_2_1.setIcon(new ImageIcon(icon_cs));
 		lblNewLabel_2_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1.setBounds(20, 10, 45, 40);
 		panel_Coso3.add(lblNewLabel_2_1);
@@ -210,7 +216,8 @@ public class Dashboard extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setIcon(new ImageIcon("D:\\JAVA\\icon\\sign out.png"));
+		Image icon_signout = new ImageIcon(this.getClass().getResource("/sign out.png")).getImage();
+		lblNewLabel_2.setIcon(new ImageIcon(icon_signout));
 		lblNewLabel_2.setBounds(20, 10, 38, 40);
 		panel_signout.add(lblNewLabel_2);
 		

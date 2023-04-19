@@ -6,6 +6,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.Box;
 import javax.swing.border.LineBorder;
+
+import Co_so_view.Co_so1_san5_view;
+import Co_so_view.Co_so1_san7_view;
+import Co_so_view.Nhan_vien_cs1_view;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Label;
@@ -49,6 +54,7 @@ public class Co_so_1 extends JPanel {
 		
 		
 		cs1_s5= new Co_so1_san5_view();
+		cs1_s5.setBounds(0, 0, 710, 503);
 		cs1_s7= new Co_so1_san7_view();
 		nv_cs1 = new Nhan_vien_cs1_view();
 		
@@ -84,11 +90,11 @@ public class Co_so_1 extends JPanel {
 				menuClicked_cs1(nv_cs1);
 			}
 		});
-		menu_nv.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				menuClicked_cs1(nv_cs1);
-			}
-		});
+//		menu_nv.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				menuClicked_cs1(nv_cs1);
+//			}
+//		});
 		menu_nv.setIcon(new ImageIcon("D:\\JAVA\\icon\\Iconshock-Real-Vista-Jobs-Asian.32.png"));
 		menuBar.add(menu_nv);
 		
@@ -101,7 +107,7 @@ public class Co_so_1 extends JPanel {
 		panel_thong_tin.add(cs1_s7);
 		panel_thong_tin.add(nv_cs1);
 		
-		menuClicked_cs1(cs1_s5);
+		menuClicked_cs1(cs1_s7);
 		
 	}
 	

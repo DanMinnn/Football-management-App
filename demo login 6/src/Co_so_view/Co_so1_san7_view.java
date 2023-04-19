@@ -1,4 +1,4 @@
-package Co_so;
+package Co_so_view;
 
 import javax.swing.JPanel;
 import javax.swing.Box;
@@ -6,6 +6,8 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -18,6 +20,9 @@ import javax.swing.JSlider;
 import java.awt.List;
 import java.awt.Choice;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
+import Main.model.san_bong;
+
 import javax.swing.JScrollPane;
 import java.awt.Component;
 import javax.swing.JTable;
@@ -25,8 +30,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-public class Co_so2_san7_view extends JPanel {
+public class Co_so1_san7_view extends JPanel {
 	private JTable table;
 	private JTextField txt_ten_kh;
 	private JTextField txt_sdt_kh;
@@ -35,10 +41,11 @@ public class Co_so2_san7_view extends JPanel {
 	private JTextField textField_4;
 	private JTextField textField_5;
 
+	private ArrayList<san_bong> list;
 	/**
 	 * Create the panel.
 	 */
-	public Co_so2_san7_view() {
+	public Co_so1_san7_view() {
 		setBackground(new Color(128, 128, 128));
 			setBounds(0,0,710,503);
 			setLayout(null);
@@ -46,16 +53,9 @@ public class Co_so2_san7_view extends JPanel {
 			table = new JTable();
 			table.setModel(new DefaultTableModel(
 				new Object[][] {
-					{null, null, null, null, null, null},
-					{null, null, null, null, null, null},
-					{null, null, null, null, null, null},
-					{null, null, null, null, null, null},
-					{null, null, null, null, null, null},
-					{null, null, null, null, null, null},
-					{null, null, null, null, null, null},
 				},
 				new String[] {
-					"STT", "T\u00EAn s\u00E2n", "Ng\u00E0y \u0111\u00E1", "Th\u1EDDi gian", "Tr\u1EA1ng th\u00E1i", ""
+					"STT", "T\u00EAn s\u00E2n", "Ng\u00E0y \u0111\u00E1", "Th\u1EDDi gian", "Tr\u1EA1ng th\u00E1i"
 				}
 			));
 			JScrollPane scrollPane = new JScrollPane(table);
@@ -111,11 +111,11 @@ public class Co_so2_san7_view extends JPanel {
 			panel_1.setBounds(0, 0, 710, 35);
 			panel.add(panel_1);
 			
-			JLabel lblNewLabel = new JLabel(" Thông tin khách hàng đặt");
+			JLabel lblNewLabel = new JLabel(" Thông tin đặt sân");
 			lblNewLabel.setForeground(Color.BLACK);
 			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblNewLabel.setBackground(Color.LIGHT_GRAY);
-			lblNewLabel.setBounds(1, 1, 711, 35);
+			lblNewLabel.setBounds(1, 1, 299, 35);
 			panel_1.add(lblNewLabel);
 			
 			JPanel panel_add_khach_hang = new JPanel();
@@ -132,7 +132,8 @@ public class Co_so2_san7_view extends JPanel {
 			JLabel lblNewLabel_2 = new JLabel("Thêm mới khách hàng");
 			lblNewLabel_2.setBounds(10, 5, 192, 47);
 			panel_add_khach_hang.add(lblNewLabel_2);
-			lblNewLabel_2.setIcon(new ImageIcon("D:\\JAVA\\icon\\Custom-Icon-Design-Pretty-Office-3-Add-Male-User.32.png"));
+			Image icon_add_kh = new ImageIcon(this.getClass().getResource("/add khach hang.png")).getImage();
+			lblNewLabel_2.setIcon(new ImageIcon(icon_add_kh));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			
 			JLabel lb_ngay_nhan = new JLabel("Ngày nhận:");
