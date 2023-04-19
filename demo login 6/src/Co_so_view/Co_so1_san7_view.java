@@ -20,6 +20,7 @@ import javax.swing.JSlider;
 import java.awt.List;
 import java.awt.Choice;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.toedter.calendar.JDateChooser;
 
 import Main.model.san_bong;
 
@@ -34,14 +35,17 @@ import java.util.ArrayList;
 
 public class Co_so1_san7_view extends JPanel {
 	private JTable table;
+	______________
 	private JTextField txt_ten_kh;
 	private JTextField txt_sdt_kh;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-
-	private ArrayList<san_bong> list;
+	//__________
+	private JDateChooser ngay_da;
+	
+	//private ArrayList<san_bong> list;
 	/**
 	 * Create the panel.
 	 */
@@ -136,27 +140,16 @@ public class Co_so1_san7_view extends JPanel {
 			lblNewLabel_2.setIcon(new ImageIcon(icon_add_kh));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			
-			JLabel lb_ngay_nhan = new JLabel("Ngày nhận:");
-			lb_ngay_nhan.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			lb_ngay_nhan.setBounds(20, 131, 82, 27);
-			panel.add(lb_ngay_nhan);
-			
-			JLabel lb_ngay_tra = new JLabel("Ngày trả:");
+			JLabel lb_ngay_tra = new JLabel("Ngày đá:");
 			lb_ngay_tra.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			lb_ngay_tra.setBounds(312, 131, 79, 27);
+			lb_ngay_tra.setBounds(20, 131, 79, 27);
 			panel.add(lb_ngay_tra);
 			
-			textField_2 = new JTextField();
-			textField_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			textField_2.setColumns(10);
-			textField_2.setBounds(110, 132, 157, 27);
-			panel.add(textField_2);
+			//_________ngày đá________________
+			ngay_da = new JDateChooser();
+			ngay_da.setBounds(110, 131, 157, 27);
+			panel.add(ngay_da);
 			
-			textField_3 = new JTextField();
-			textField_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			textField_3.setColumns(10);
-			textField_3.setBounds(393, 131, 157, 27);
-			panel.add(textField_3);
 			
 			JLabel lb_TG_bat_dau = new JLabel("Bắt đầu:");
 			lb_TG_bat_dau.setFont(new Font("Tahoma", Font.PLAIN, 15));
