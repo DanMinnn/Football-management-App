@@ -11,7 +11,7 @@ public class san_bong {
 	
 	private Date ngay_da;
 	private Date thoi_gian_da;
-	
+	//private khach_hang kh;
 	private boolean check;
 	private String trang_thai_san;
 	
