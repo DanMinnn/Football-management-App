@@ -22,6 +22,7 @@ import java.awt.Choice;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 
+import Main.dao.san_bong_dao;
 import Main.model.san_bong;
 
 import javax.swing.JScrollPane;
@@ -32,10 +33,13 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Co_so1_san7_view extends JPanel {
-	private JTable table;
-	______________
+	
+	
+	//______________
 	private JTextField txt_ten_kh;
 	private JTextField txt_sdt_kh;
 	private JTextField textField_2;
@@ -44,8 +48,10 @@ public class Co_so1_san7_view extends JPanel {
 	private JTextField textField_5;
 	//__________
 	private JDateChooser ngay_da;
-	
-	//private ArrayList<san_bong> list;
+	//________
+	private DefaultTableModel model;
+	private JTable table;
+	private ArrayList<san_bong> list;
 	/**
 	 * Create the panel.
 	 */
@@ -53,22 +59,7 @@ public class Co_so1_san7_view extends JPanel {
 		setBackground(new Color(128, 128, 128));
 			setBounds(0,0,710,503);
 			setLayout(null);
-			
-			table = new JTable();
-			table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"STT", "T\u00EAn s\u00E2n", "Ng\u00E0y \u0111\u00E1", "Th\u1EDDi gian", "Tr\u1EA1ng th\u00E1i"
-				}
-			));
-			JScrollPane scrollPane = new JScrollPane(table);
-			scrollPane.setBounds(0, 35, 710, 164);
-			add(scrollPane);
-			
-		
-			
-			
+		  //// ________________________________________
 			JPanel panel_2 = new JPanel();
 			panel_2.setLayout(null);
 			panel_2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -79,7 +70,28 @@ public class Co_so1_san7_view extends JPanel {
 			lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblNewLabel_3.setBounds(10, 0, 185, 34);
 			panel_2.add(lblNewLabel_3);
+            
+			list = san_bong_dao.getInterface().select_by_condition("maCS = 1");
 			
+			table = new JTable();
+			table.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+				}
+			));
+			table.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			JScrollPane scrollPane = new JScrollPane(table);
+			scrollPane.setBounds(0, 35, 710, 164);
+			add(scrollPane);
+			
+			 model = (DefaultTableModel) table.getModel();
+			 model.setColumnIdentifiers(new Object[] {
+						"STT", "Tên sân", "Ngày đá", "Thời gian", "Trạng thái"	 
+			});
+			 showTable();
+			  //// ________________________________________
+			 
 			JPanel panel = new JPanel();
 			panel.setLayout(null);
 			panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -174,11 +186,21 @@ public class Co_so1_san7_view extends JPanel {
 			panel.add(textField_5);
 			
 			JButton bt_dat_san = new JButton("Đặt sân");
+			bt_dat_san.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+			});
 			bt_dat_san.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			bt_dat_san.setBounds(470, 233, 97, 46);
 			panel.add(bt_dat_san);
 			
 			JButton bt_huy_san = new JButton("Huỷ sân");
+			bt_huy_san.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+			});
 			bt_huy_san.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			bt_huy_san.setBounds(584, 233, 97, 46);
 			panel.add(bt_huy_san);
@@ -194,8 +216,26 @@ public class Co_so1_san7_view extends JPanel {
 			panel.add(lblNewLabel_4);
 			
 			JButton bt_dat_san_1 = new JButton("Tìm kiếm");
+			bt_dat_san_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			bt_dat_san_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			bt_dat_san_1.setBounds(346, 233, 107, 46);
 			panel.add(bt_dat_san_1);
 	}
+	int i = 1;
+	public void showTable() {
+		for(san_bong sb : list) {
+			model.addRow(new Object[] {
+					i++, 
+					sb.getTen_san(), 
+					sb.getNgay_da(),
+					sb.getThoi_gian_da(),
+					sb.getTrang_thai_san()	
+				});
+		}
+		
+	}
+	
 }

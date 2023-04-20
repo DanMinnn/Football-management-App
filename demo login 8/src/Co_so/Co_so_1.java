@@ -7,9 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.Box;
 import javax.swing.border.LineBorder;
 
-import Co_so_view.Co_so1_san5_view;
-import Co_so_view.Co_so1_san7_view;
-import Co_so_view.Nhan_vien_cs1_view;
+import Co_so_view.*;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
