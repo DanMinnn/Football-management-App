@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
 import Controller.NhanVienController;
+import Main.dao.Co_so_dao;
 import Main.dao.NhanVienDAO;
 import Main.dao.san_bong_dao;
 import Main.model.Co_so;
@@ -94,6 +95,8 @@ public class Nhan_vien extends JPanel {
 		setLayout(null);
 		
 		ActionListener action = new NhanVienController(this);
+		id_cs = new ArrayList<>();
+		
 		
 		JPanel panel_main = new JPanel();
 		panel_main.setBounds(0, 0, 893, 713);
@@ -223,6 +226,7 @@ public class Nhan_vien extends JPanel {
 		bt_delete_san.setBounds(706, 256, 97, 46);
 		pn_TT_nv.add(bt_delete_san);
 		
+		id_cs = Co_so_dao.getInterface().selectALL();
 		DefaultComboBoxModel comboModel = new DefaultComboBoxModel();
 		for (Co_so cs : id_cs) {
 			comboModel.addElement(cs.getID_CoSo());
@@ -236,7 +240,7 @@ public class Nhan_vien extends JPanel {
 		pn_cs.setLayout(null);
 		pn_cs.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		pn_cs.setBackground(Color.WHITE);
-		pn_cs.setBounds(0, 0, 893, 125);
+		pn_cs.setBounds(0, 10, 893, 125);
 		panel_main.add(pn_cs);
 		
 		JPanel panel_1_1_1 = new JPanel();
@@ -263,7 +267,11 @@ public class Nhan_vien extends JPanel {
 		lb_cs.setBounds(48, 51, 60, 35);
 		pn_cs.add(lb_cs);
 		
-		 jcombo_CS = new JComboBox(comboModel);
+		DefaultComboBoxModel comboModel_maCS = new DefaultComboBoxModel();
+		for (Co_so cs : id_cs) {
+			comboModel_maCS.addElement(cs.getID_CoSo());
+		}
+		 jcombo_CS = new JComboBox(comboModel_maCS);
 		 jcombo_CS.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		 jcombo_CS.setBounds(110, 48, 102, 41);
 		 pn_cs.add(jcombo_CS);
@@ -292,6 +300,7 @@ public class Nhan_vien extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				NhanVien nv = new NhanVien();
 				NhanVienDAO.getInstance().SelectNhanVien("iD_CoSo = "+jcombo_CS_nv.getItemAt(jcombo_CS_nv.getSelectedIndex()));
+				LoadData();
 			}
 		});
 		bt_xem_ds.setFont(new Font("Tahoma", Font.PLAIN, 16));
