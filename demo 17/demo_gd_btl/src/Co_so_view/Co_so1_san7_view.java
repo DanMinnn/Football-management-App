@@ -23,6 +23,12 @@ import Main.model.Co_so;
 import Main.model.dat_san;
 import Main.model.khach_hang;
 import Main.model.san_bong;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -35,6 +41,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
@@ -54,6 +61,7 @@ import java.sql.SQLException;
 import javax.swing.ComboBoxModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
+import java.awt.SystemColor;
 
 public class Co_so1_san7_view extends JPanel {
 
@@ -157,7 +165,7 @@ public class Co_so1_san7_view extends JPanel {
 
 		JLabel lb_ten_san = new JLabel("Tên sân:");
 		lb_ten_san.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lb_ten_san.setBounds(20, 130, 79, 27);
+		lb_ten_san.setBounds(329, 130, 79, 27);
 		panel.add(lb_ten_san);
 
 
@@ -169,24 +177,24 @@ public class Co_so1_san7_view extends JPanel {
 		}
 		jcombo_ten_san = new JComboBox(comboModel);
 		jcombo_ten_san.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		jcombo_ten_san.setBounds(109, 130, 146, 30);
+		jcombo_ten_san.setBounds(418, 126, 146, 30);
 		panel.add(jcombo_ten_san);
 		
 		
 		
 		JLabel lb_ngay_da = new JLabel("Ngày đá:");
 		lb_ngay_da.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lb_ngay_da.setBounds(20, 170, 79, 27);
+		lb_ngay_da.setBounds(20, 130, 79, 27);
 		panel.add(lb_ngay_da);
 
 		// _________ngày đá________________
 		ngay_da = new JDateChooser();
-		ngay_da.setBounds(109, 170, 146, 27);
+		ngay_da.setBounds(109, 130, 146, 27);
 		panel.add(ngay_da);
 
 		JLabel lb_TG_bat_dau = new JLabel("Bắt đầu:");
 		lb_TG_bat_dau.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lb_TG_bat_dau.setBounds(20, 208, 79, 27);
+		lb_TG_bat_dau.setBounds(20, 167, 79, 27);
 		panel.add(lb_TG_bat_dau);
 
 		SpinnerDateModel sm1 = new SpinnerDateModel(now, null, null, Calendar.HOUR_OF_DAY);
@@ -194,12 +202,12 @@ public class Co_so1_san7_view extends JPanel {
 		JSpinner.DateEditor de1 = new JSpinner.DateEditor(txt_gio_da, "HH:mm");
 		txt_gio_da.setEditor(de1);
 		txt_gio_da.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_gio_da.setBounds(110, 208, 145, 27);
+		txt_gio_da.setBounds(109, 167, 145, 27);
 		panel.add(txt_gio_da);
 
 		JLabel lb_TG_ket_thuc = new JLabel("Kết thúc:");
 		lb_TG_ket_thuc.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lb_TG_ket_thuc.setBounds(20, 245, 79, 27);
+		lb_TG_ket_thuc.setBounds(20, 204, 79, 27);
 		panel.add(lb_TG_ket_thuc);
 
 		SpinnerDateModel sm2 = new SpinnerDateModel(now, null, null, Calendar.HOUR_OF_DAY);
@@ -207,7 +215,7 @@ public class Co_so1_san7_view extends JPanel {
 		JSpinner.DateEditor de2 = new JSpinner.DateEditor(txt_gio_nghi, "HH:mm");
 		txt_gio_nghi.setEditor(de2);
 		txt_gio_nghi.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_gio_nghi.setBounds(109, 245, 146, 27);
+		txt_gio_nghi.setBounds(109, 204, 146, 27);
 		panel.add(txt_gio_nghi);
 
 		JButton bt_dat_san = new JButton("Đặt sân");
@@ -280,7 +288,7 @@ public class Co_so1_san7_view extends JPanel {
 		});
 		bt_dat_san.setBackground(new Color(240, 240, 240));
 		bt_dat_san.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		bt_dat_san.setBounds(514, 260, 97, 46);
+		bt_dat_san.setBounds(376, 260, 97, 46);
 		panel.add(bt_dat_san);
 
 		JButton bt_huy_san = new JButton("Huỷ sân");
@@ -303,7 +311,7 @@ public class Co_so1_san7_view extends JPanel {
 			}
 		});
 		bt_huy_san.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		bt_huy_san.setBounds(621, 260, 97, 46);
+		bt_huy_san.setBounds(483, 260, 97, 46);
 		panel.add(bt_huy_san);
 
 		JButton bt_tim_san = new JButton("Tìm sân");
@@ -352,8 +360,36 @@ public class Co_so1_san7_view extends JPanel {
 			}
 		});
 		bt_tim_san.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		bt_tim_san.setBounds(398, 260, 106, 46);
+		bt_tim_san.setBounds(260, 260, 106, 46);
 		panel.add(bt_tim_san);
+		
+		JButton btn_thanhToan = new JButton("Thanh toán");
+		btn_thanhToan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(txt_sdt_kh.getText().length() <= 0)
+					return;
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				if(model.getRowCount() <= 0)
+					return;
+				
+				Hashtable map = new Hashtable();
+					
+				try {
+					JasperReport jrp = JasperCompileManager.compileReport("src/Co_so_view/Report_ThanhToan.jrxml");
+					map.put("sDT", txt_sdt_kh.getText());
+					Connection conn = jdbc_until.getConnection();
+					JasperPrint jp = JasperFillManager.fillReport(jrp, map, conn);
+					JasperViewer.viewReport(jp, false);
+				} catch (JRException e1) {	
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btn_thanhToan.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btn_thanhToan.setBackground(SystemColor.menu);
+		btn_thanhToan.setBounds(590, 260, 146, 46);
+		panel.add(btn_thanhToan);
 		
 	}
 

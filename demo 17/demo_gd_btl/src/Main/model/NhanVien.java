@@ -3,7 +3,7 @@ package Main.model;
 import java.sql.Date;
 
 public class NhanVien {
-	private int ID;
+	private String ID;
 	private String HoTen;
 	private String GioiTinh;
 	private Date NamSinh;
@@ -17,7 +17,7 @@ public class NhanVien {
 	}
 
 
-	public NhanVien(int iD, String hoTen, String gioiTinh, Date namSinh, String sDT, String diaChi) {
+	public NhanVien(String iD, String hoTen, String gioiTinh, Date namSinh, String sDT, String diaChi) {
 		ID = iD;
 		HoTen = hoTen;
 		GioiTinh = gioiTinh;
@@ -28,7 +28,7 @@ public class NhanVien {
 
 	
 	
-	public NhanVien(int iD, String hoTen, String gioiTinh, Date namSinh, String sDT, String diaChi, String iD_CoSo) {
+	public NhanVien(String iD, String hoTen, String gioiTinh, Date namSinh, String sDT, String diaChi, String iD_CoSo) {
 		ID = iD;
 		HoTen = hoTen;
 		GioiTinh = gioiTinh;
@@ -39,12 +39,12 @@ public class NhanVien {
 	}
 
 
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
 
 
-	public void setID(int iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 

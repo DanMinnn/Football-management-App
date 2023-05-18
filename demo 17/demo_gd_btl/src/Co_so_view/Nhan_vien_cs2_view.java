@@ -50,18 +50,21 @@ public class Nhan_vien_cs2_view extends JPanel {
 			}
 		));
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		model.setColumnIdentifiers(new Object[] { "STT", "Mã Nhân viên", "Tên Nhân viên","Giới tính"});
+		model.setColumnIdentifiers(new Object[] { "STT", "Mã Nhân viên", "Tên Nhân viên","Giới tính", "Số điện thoại"});
+		
+		showTable();
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(0, 34, 746, 528);
 		add(scrollPane);
 	
 	}
 	public void showTable() {
-		nv = NhanVienDAO.getInstance().select_by_condition("iD_CoSo = 2");
+		nv = NhanVienDAO.getInstance().SelectNhanVien("iD_CoSo = 2");
 		int i = 1;
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		for (NhanVien ds : nv) {
-			model.addRow(new Object[] { i++, ds.getID(),ds.getHoTen(),ds.getGioiTinh()});
+			model.addRow(new Object[] { i++, ds.getID(),ds.getHoTen(),ds.getGioiTinh(), ds.getSDT()});
 		}
 	}
 

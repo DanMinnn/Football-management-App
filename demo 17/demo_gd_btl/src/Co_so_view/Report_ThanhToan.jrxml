@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_ThanhToan" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29ca56c7-de7f-42ca-b1d8-fcfb88454ff8">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[dW5nZHVuZ3NhbmJvbmcubGljaGRhdCAsMTUsNTYsOWQxMjZkOTUtZWY0NC00NDM5LWI1YzUtZTI3
+YWY0N2VlODk2O3VuZ2R1bmdzYW5ib25nLmtoYWNoaGFuZyAsMTgwLDIzOCw2YzI2N2MzMS03YzZh
+LTQ3OTAtYmUwMC00OTJmMmZmYWRmNDI7dW5nZHVuZ3NhbmJvbmcuc2FuYm9uZyAsMTgwLDE1LGQz
+OGU2NTQ1LWZhYTktNDhhZS1iZjc1LWMyMGQ1MTkzZjc5Nzs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Thanh Toan"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="468"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
+	<parameter name="sDT" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT kh.`HoTen`,
+	ld.`iD_SanBong`,
+	ld.`TenSan`,
+	ld.`LoaiSan`,
+	ld.`NgayDa`,
+	ld.`TgBatDau`,
+	ld.`TgKetThuc`,
+	ld.`ID_SDT_KH`,
+	sb.`GiaTien`
+FROM ungdungsanbong.lichdat ld
+	INNER JOIN ungdungsanbong.sanbong sb ON 
+	 ld.`iD_SanBong` = sb.`iD_SanBong` 
+	INNER JOIN ungdungsanbong.khachhang kh ON 
+	 ld.`ID_SDT_KH` = kh.`ID_SDT_KH` 
+WHERE 
+	 ld.`ID_SDT_KH` = $P{sDT}]]>
+	</queryString>
+	<field name="HoTen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="HoTen"/>
+		<property name="com.jaspersoft.studio.field.label" value="HoTen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="khachhang"/>
+	</field>
+	<field name="iD_SanBong" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="iD_SanBong"/>
+		<property name="com.jaspersoft.studio.field.label" value="iD_SanBong"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lichdat"/>
+	</field>
+	<field name="TenSan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TenSan"/>
+		<property name="com.jaspersoft.studio.field.label" value="TenSan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lichdat"/>
+	</field>
+	<field name="LoaiSan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LoaiSan"/>
+		<property name="com.jaspersoft.studio.field.label" value="LoaiSan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lichdat"/>
+	</field>
+	<field name="NgayDa" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="NgayDa"/>
+		<property name="com.jaspersoft.studio.field.label" value="NgayDa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lichdat"/>
+	</field>
+	<field name="TgBatDau" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="TgBatDau"/>
+		<property name="com.jaspersoft.studio.field.label" value="TgBatDau"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lichdat"/>
+	</field>
+	<field name="TgKetThuc" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="TgKetThuc"/>
+		<property name="com.jaspersoft.studio.field.label" value="TgKetThuc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lichdat"/>
+	</field>
+	<field name="ID_SDT_KH" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ID_SDT_KH"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_SDT_KH"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lichdat"/>
+	</field>
+	<field name="GiaTien" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="GiaTien"/>
+		<property name="com.jaspersoft.studio.field.label" value="GiaTien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sanbong"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="162" y="20" width="231" height="51" uuid="eaf04194-5308-4a23-97a2-793d38f69aa3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HÓA ĐƠN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="10" width="140" height="30" uuid="c4fb2016-fcc1-40d8-aa65-b18375e96769"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Tên khách hàng:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="10" width="150" height="31" uuid="621ea96f-a0c6-4585-ba48-660e8db27c29"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HoTen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="60" width="151" height="31" uuid="f772616c-61c2-490b-8e89-f322070aec7d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID_SDT_KH}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="60" width="140" height="30" uuid="aa30dd75-486f-4608-aa95-d3d4d1058646"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Số điện thoại:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="51" height="31" uuid="da1c34c5-8266-4817-aedd-8651f05cb27b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Sân]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="10" width="71" height="31" uuid="b76dcd5a-05cf-4f29-90b1-b425738cb0b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên Sân]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="10" width="90" height="31" uuid="96e53b9f-fe75-4a03-85f5-354fe5049b0a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giờ vào]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="10" width="100" height="31" uuid="fa1a5948-62a5-4b62-b05b-a134a24e5c38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày đá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="10" width="60" height="31" uuid="8abf9aba-7c54-4b82-83f5-eb06892f6b4a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loại sân]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="11" width="60" height="31" uuid="d5f56644-bf05-46ed-a6e4-c86a1b89298b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giá tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="10" width="60" height="31" uuid="50de5f9a-0cfb-4aa9-90ce-8d01ade15f1d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giờ ra]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="9" width="30" height="30" uuid="50f678c1-aae4-4519-a7a6-83548dceaf95"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{iD_SanBong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="9" width="70" height="30" uuid="b502d787-28b1-4b9b-a70e-7f21dbe10f49"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TenSan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="9" width="60" height="30" uuid="dc1723b4-1741-4c4f-8041-d03dceab0139"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LoaiSan}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="MMM d, yyyy">
+				<reportElement x="210" y="9" width="100" height="30" uuid="99a036d5-f67f-4eab-a884-a3fd7af50913"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NgayDa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h:mm a">
+				<reportElement x="320" y="9" width="90" height="30" uuid="733aebbd-1def-4ad9-b83a-a7074ddc70f4"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TgBatDau}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="9" width="60" height="30" uuid="0799c69b-c84f-437d-9374-cdd9c77c53c6"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GiaTien}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h:mm a">
+				<reportElement x="420" y="10" width="70" height="30" uuid="3a3fb0e3-9d33-4b4d-909e-854c8aa9f7d2"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TgKetThuc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="48" splitType="Stretch"/>
+	</summary>
+</jasperReport>

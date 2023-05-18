@@ -34,6 +34,7 @@ import javax.swing.JScrollPane;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import java.sql.Date;
 import java.awt.event.MouseAdapter;
@@ -298,9 +299,7 @@ public class Nhan_vien extends JPanel {
 		bt_xem_ds.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				NhanVien nv = new NhanVien();
-				NhanVienDAO.getInstance().SelectNhanVien("iD_CoSo = "+jcombo_CS_nv.getItemAt(jcombo_CS_nv.getSelectedIndex()));
-				LoadData();
+				xemNV();
 			}
 		});
 		bt_xem_ds.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -389,7 +388,7 @@ public class Nhan_vien extends JPanel {
 		DefaultTableModel model_table = (DefaultTableModel) table_NhanVien.getModel();
 		int i_row = table_NhanVien.getSelectedRow();
 		
-		int ID = Integer.valueOf(model_table.getValueAt(i_row, 0)+"");
+		String ID = model_table.getValueAt(i_row, 0)+"";
 		String hoTen = model_table.getValueAt(i_row, 1)+"";
 		String textGioiTinh = model_table.getValueAt(i_row, 2)+"";
 		String s_namSinh = model_table.getValueAt(i_row, 3)+"";
@@ -408,7 +407,7 @@ public class Nhan_vien extends JPanel {
 	}
 	
 	public void capNhatThongTinNhanVien() {	
-		int iD = Integer.valueOf(txt_ID.getText());
+		String iD = txt_ID.getText();
 		String HoTen = txt_hoTen.getText();
 		String gioiTinh = (String) comboBox_gioiTinh.getSelectedItem();
 		String S_namSinh =  txt_NamSinh.getText();
@@ -447,5 +446,10 @@ public class Nhan_vien extends JPanel {
 		}else {
 			showNV();
 		}
+	}
+	
+	public void xemNV() {
+		nhanVienList = NhanVienDAO.getInstance().SelectNhanVien("iD_CoSo = "+jcombo_CS.getItemAt(jcombo_CS.getSelectedIndex()));
+		LoadData();
 	}
 }

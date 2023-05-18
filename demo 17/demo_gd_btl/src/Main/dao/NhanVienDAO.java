@@ -26,7 +26,7 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 					+ "VALUES (?,?,?,?,?,?,?,?)";
 				
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setLong(1, t.getID());
+			pst.setString(1, t.getID());
 			pst.setString(2, t.getHoTen());
 			pst.setString(3, t.getGioiTinh());
 			pst.setDate(4, (Date) t.getNamSinh());
@@ -64,7 +64,6 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 					", NamSinh=?"+
 					", SDT=?"+
 					", DiaChi=?"+
-					", iD_CoSo=?"+
 					" WHERE iD_NhanVien=?";
 			
 				
@@ -74,9 +73,8 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 			pst.setDate(3, (Date) t.getNamSinh());
 			pst.setString(4, t.getSDT());
 			pst.setString(5, t.getDiaChi());
-			pst.setInt(6, t.getID());
-			pst.setString(7, t.getiD_CoSo());
-			
+			pst.setString(6, t.getID());
+
 			ketQua = pst.executeUpdate();
 			
 			System.out.println("Bạn đã thực thi: "+ sql);
@@ -103,7 +101,7 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 			
 				
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setLong(1, t.getID());
+			pst.setString(1, t.getID());
 			
 			ketQua = pst.executeUpdate();
 			
@@ -133,7 +131,7 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				int ID = rs.getInt("iD_NhanVien");
+				String ID = rs.getString("iD_NhanVien");
 				String HoTen = rs.getString("HoTen");
 				String gioiTinh = rs.getString("GioiTinh");
 				Date NamSinh = rs.getDate("NamSinh");
@@ -174,7 +172,7 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				int ID = rs.getInt("iD_NhanVien");
+				String ID = rs.getString("iD_NhanVien");
 				String hoTen = rs.getString("HoTen");
 				String gioiTinh = rs.getString("GioiTinh");
 				Date NamSinh = rs.getDate("NamSinh");
@@ -209,7 +207,7 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				int ID = rs.getInt("iD_NhanVien");
+				String ID = rs.getString("iD_NhanVien");
 				String hoTen = rs.getString("HoTen");
 				String gioiTinh = rs.getString("GioiTinh");
 				Date NamSinh = rs.getDate("NamSinh");

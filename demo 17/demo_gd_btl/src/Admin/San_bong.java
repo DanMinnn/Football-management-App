@@ -275,7 +275,7 @@ public class San_bong extends JPanel {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(234, 51, 129, 38);
+		btnNewButton.setBounds(234, 51, 165, 38);
 		pn_cs.add(btnNewButton);
 
 		JPanel pn_ds_san = new JPanel();

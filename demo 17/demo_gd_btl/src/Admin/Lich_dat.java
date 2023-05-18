@@ -277,13 +277,13 @@ public class Lich_dat extends JPanel {
 		model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
 		model.setColumnIdentifiers(
-				new Object[] { "STT", "Mã sân", "Tên sân", "Loại sân" ,"Giờ đá","Khách hàng", "SĐT"});
+				new Object[] { "STT", "Mã sân", "Tên sân", "Loại sân" ,"Ngày vào","Khách hàng", "SĐT"});
 	}
 
 	public void showTable() {
 		int i = 1;
 		for (dat_san dt : list) {
-			model.addRow(new Object[] { i++, dt.getMa_san(), dt.getTen_san(),dt.getLoai_san(),dt.getGio_bat_dau(),dt.getTen_kh(),dt.getSdt()
+			model.addRow(new Object[] { i++, dt.getMa_san(), dt.getTen_san(),dt.getLoai_san(),dt.getNgay_Da(),dt.getTen_kh(),dt.getSdt()
 					});
 		}
 	}

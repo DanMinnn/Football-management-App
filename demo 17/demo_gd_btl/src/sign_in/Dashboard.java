@@ -58,6 +58,8 @@ public class Dashboard extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(58, 105, 56));
 		contentPane.setBorder(new LineBorder(new Color(192, 192, 192), 3));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/icon_app.png"));
+		setIconImage(img.getImage());
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		home = new Home();

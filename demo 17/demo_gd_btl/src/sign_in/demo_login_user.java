@@ -72,6 +72,8 @@ public class demo_login_user extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/icon_app.png"));
+		setIconImage(img.getImage());
 		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 
@@ -138,7 +140,7 @@ public class demo_login_user extends JFrame {
 		});
 		btnRegister.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(0, 0, 0)));
 		btnRegister.setBackground(new Color(211, 211, 211));
-		btnRegister.setForeground(new Color(169, 169, 169));
+		btnRegister.setForeground(new Color(0, 0, 0));
 		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnRegister.setBounds(0, 253, 167, 36);
 		panel_1.add(btnRegister);

@@ -30,7 +30,7 @@ public class NhanVienController implements ActionListener{
 			this.nv.xoaForm();
 		} else if(cm.equals("Lưu")) {
 			try {
-				int ID = Integer.valueOf(this.nv.txt_ID.getText());
+				String ID = this.nv.txt_ID.getText();
 				String HoTen = this.nv.txt_hoTen.getText();
 				String gioiTinh = (String) this.nv.comboBox_gioiTinh.getSelectedItem();
 				String s_namSinh =  this.nv.txt_NamSinh.getText();
