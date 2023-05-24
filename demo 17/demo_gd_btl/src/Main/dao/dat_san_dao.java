@@ -247,7 +247,8 @@ public class dat_san_dao implements Dao_interface<dat_san> {
 			//thoi gian da trong ds
 			while (rs.next()) {
 				dat_san dt = new dat_san();
-				khach_hang kh = new khach_hang();
+				khach_hang kh = 
+						new khach_hang();
 				try {
 					Date gio_nghi = spf.parse( rs.getString("NgayDa") +" "+  rs.getString("tgKetThuc"));
 					if(gio_nghi.before(now)) {

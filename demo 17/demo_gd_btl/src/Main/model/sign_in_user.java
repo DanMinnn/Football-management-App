@@ -10,7 +10,6 @@ public class sign_in_user {
 	public String getSdt() {
 		return sdt;
 	}
-
 	public void setSdt(String sdt) {
 		this.sdt = sdt;
 	}

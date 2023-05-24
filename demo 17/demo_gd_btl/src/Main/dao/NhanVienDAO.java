@@ -22,8 +22,8 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 		int ketQua = 0;
 		Connection con = jdbc_until.getConnection();
 		try {
-			String sql = "INSERT INTO nhanvien (iD_NhanVien, HoTen, GioiTinh ,NamSinh, SDT, DiaChi, iD_CoSo, ID_SDT_KH)"
-					+ "VALUES (?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO nhanvien (iD_NhanVien, HoTen, GioiTinh ,NamSinh, SDT, DiaChi, iD_CoSo)"
+					+ "VALUES (?,?,?,?,?,?,?)";
 				
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, t.getID());
@@ -33,7 +33,7 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 			pst.setString(5, t.getSDT());
 			pst.setString(6, t.getDiaChi());
 			pst.setString(7, t.getiD_CoSo());
-			pst.setString(8, t.getID_SDT_KH());
+			//pst.setString(8, t.getID_SDT_KH());
 			
 			ketQua = pst.executeUpdate();
 			
@@ -64,6 +64,7 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 					", NamSinh=?"+
 					", SDT=?"+
 					", DiaChi=?"+
+					", iD_CoSo=?"+
 					" WHERE iD_NhanVien=?";
 			
 				
@@ -73,8 +74,9 @@ public class NhanVienDAO implements Dao_interface<NhanVien>{
 			pst.setDate(3, (Date) t.getNamSinh());
 			pst.setString(4, t.getSDT());
 			pst.setString(5, t.getDiaChi());
-			pst.setString(6, t.getID());
-
+			pst.setString(6, t.getiD_CoSo());
+			pst.setString(7, t.getID());
+				
 			ketQua = pst.executeUpdate();
 			
 			System.out.println("Bạn đã thực thi: "+ sql);

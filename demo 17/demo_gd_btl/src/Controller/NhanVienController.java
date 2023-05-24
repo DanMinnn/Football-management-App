@@ -37,12 +37,13 @@ public class NhanVienController implements ActionListener{
 				Date namSinh = Date.valueOf(s_namSinh);
 				String sDT = this.nv.txt_SĐT.getText();
 				String diaChi = this.nv.txt_diaChi.getText();
+				String iD_CoSo = this.nv.jcombo_CS_nv.getItemAt(this.nv.jcombo_CS_nv.getSelectedIndex());
 				
 				String regexPhoneNumber = "^0[35789]{1}\\d{8}$";
 				Pattern p = Pattern.compile(regexPhoneNumber);
 				Matcher m = p.matcher(sDT);
 				if(m.find()) {
-					NhanVien nv = new NhanVien(ID, HoTen, gioiTinh, namSinh, sDT, diaChi);
+					NhanVien nv = new NhanVien(ID, HoTen, gioiTinh, namSinh, sDT, diaChi, iD_CoSo);
 					
 					this.nv.themNhanVienVaoBang(nv);
 				}else {

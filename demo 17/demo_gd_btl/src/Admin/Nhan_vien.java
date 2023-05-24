@@ -44,7 +44,7 @@ public class Nhan_vien extends JPanel {
 	
 	public 	QLNV model;
 	private JComboBox<String> jcombo_CS;
-	private JComboBox<String> jcombo_CS_nv;
+	public JComboBox<String> jcombo_CS_nv;
 	
 	public JTable table_NhanVien;
 	DefaultTableModel tableModel;
@@ -414,10 +414,11 @@ public class Nhan_vien extends JPanel {
 		Date NamSinh = Date.valueOf(S_namSinh);
 		String SDT = txt_SĐT.getText();
 		String DiaChi = txt_diaChi.getText();
+		String iD_CoSo = (String) jcombo_CS_nv.getItemAt(jcombo_CS_nv.getSelectedIndex());
 		
-		NhanVien nv = new NhanVien(iD, HoTen, gioiTinh, NamSinh, SDT, DiaChi);
+		NhanVien nv = new NhanVien(iD, HoTen, gioiTinh, NamSinh, SDT, DiaChi, iD_CoSo);
 		
-		NhanVienDAO.getInstance().update(nv,HoTen);
+		NhanVienDAO.getInstance().update(nv,null);
 		
 		showNV();
 	}

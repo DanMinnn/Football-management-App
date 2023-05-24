@@ -6,12 +6,7 @@ public class dat_san {
 	private String ten_kh;
 	private String id_San;
 	private String id_CS;
-	public String getTen_kh() {
-		return ten_kh;
-	}
-	public void setTen_kh(String ten_kh) {
-		this.ten_kh = ten_kh;
-	}
+	
 	private String ngay_Da;
 	private String Gio_bat_dau;
 	private String Gio_ket_thuc;
@@ -21,6 +16,12 @@ public class dat_san {
 	public dat_san() {
 	}
 //	
+	public String getTen_kh() {
+		return ten_kh;
+	}
+	public void setTen_kh(String ten_kh) {
+		this.ten_kh = ten_kh;
+	}
 	public String getTen_san() {
 		return ten_san;
 	}
